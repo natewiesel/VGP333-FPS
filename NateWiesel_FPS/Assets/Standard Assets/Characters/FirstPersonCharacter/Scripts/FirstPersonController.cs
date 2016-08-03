@@ -41,6 +41,8 @@ namespace UnityStandardAssets.Characters.FirstPerson
         private float m_NextStep;
         private bool m_Jumping;
         private AudioSource m_AudioSource;
+        private float speedPrevious;
+        private Vector2 m_InputPrevious;
 
         // Use this for initialization
         private void Start()
@@ -127,9 +129,16 @@ namespace UnityStandardAssets.Characters.FirstPerson
             }
             m_CollisionFlags = m_CharacterController.Move(m_MoveDir*Time.fixedDeltaTime);
 
-            ProgressStepCycle(speed);
-            UpdateCameraPosition(speed);
-
+            if (m_IsWalking)
+            {
+                ProgressStepCycle(speed);
+                UpdateCameraPosition(speed);
+            }
+            else
+            {
+                ProgressStepCycle(speed*2f);
+                UpdateCameraPosition(speed*2f);
+            }
             m_MouseLook.UpdateCursorLock();
         }
 
@@ -209,14 +218,23 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
             bool waswalking = m_IsWalking;
 
-#if !MOBILE_INPUT
             // On standalone builds, walk/run speed is modified by a key press.
             // keep track of whether or not the character is walking or running
-            m_IsWalking = !Input.GetKey(KeyCode.LeftShift);
-#endif
-            // set the desired speed to be walking or running
-            speed = m_IsWalking ? m_WalkSpeed : m_RunSpeed;
-            m_Input = new Vector2(horizontal, vertical);
+            if (m_CharacterController.isGrounded)
+            {
+                m_IsWalking = !Input.GetKey(KeyCode.LeftShift);
+                // set the desired speed to be walking or running
+                speed = m_IsWalking ? m_WalkSpeed : m_RunSpeed;
+                m_Input = new Vector2(horizontal, vertical);
+            } else
+            {
+                speed = speedPrevious;
+                m_Input = m_InputPrevious;
+            }
+
+            speedPrevious = speed;
+            m_InputPrevious = m_Input;
+
 
             // normalize input if it exceeds 1 in combined length:
             if (m_Input.sqrMagnitude > 1)
