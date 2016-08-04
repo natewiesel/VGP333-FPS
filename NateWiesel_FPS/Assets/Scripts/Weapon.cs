@@ -4,7 +4,7 @@ using System;
 
 public class Weapon : MonoBehaviour {
 
-    private float lastShotTime;
+    //private float lastShotTime;
     public float fireRate = 1f;
     private float shootCooldown = 0f;
     bool canShoot = false;
@@ -24,10 +24,7 @@ public class Weapon : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        lastShotTime = Time.time;
-
-        cachedRB = GetComponent<Rigidbody>();
-        cachedRB.transform.position.Set(heldPosition.x, heldPosition.y, heldPosition.z);
+        //lastShotTime = Time.time;
     }
 	
 	// Update is called once per frame
@@ -74,11 +71,11 @@ public class Weapon : MonoBehaviour {
 
         if (isAiming)
         {
-            cachedRB.transform.localPosition.Set(aimPosition.x,aimPosition.y,aimPosition.z);
+            transform.localPosition = Vector3.Lerp(aimPosition, heldPosition, aimLerpSpeed * Time.deltaTime);
             Debug.Log(cachedTrans.localPosition.ToString());
         } else
         {
-            cachedRB.transform.localPosition.Set(heldPosition.x, heldPosition.y, heldPosition.z);
+            transform.localPosition = Vector3.Lerp(heldPosition, aimPosition, aimLerpSpeed*Time.deltaTime);
             Debug.Log(cachedTrans.localPosition.ToString());
         }
     }
