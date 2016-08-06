@@ -25,6 +25,7 @@ public class Weapon : MonoBehaviour {
     // Use this for initialization
     void Start () {
         //lastShotTime = Time.time;
+        transform.localPosition = heldPosition;
     }
 	
 	// Update is called once per frame
@@ -71,11 +72,11 @@ public class Weapon : MonoBehaviour {
 
         if (isAiming)
         {
-            transform.localPosition = Vector3.Lerp(aimPosition, heldPosition, aimLerpSpeed * Time.deltaTime);
+            transform.localPosition = Vector3.Lerp(transform.localPosition, aimPosition, aimLerpSpeed);
             Debug.Log(cachedTrans.localPosition.ToString());
         } else
         {
-            transform.localPosition = Vector3.Lerp(heldPosition, aimPosition, aimLerpSpeed*Time.deltaTime);
+            transform.localPosition = Vector3.Lerp(transform.localPosition, heldPosition, aimLerpSpeed);
             Debug.Log(cachedTrans.localPosition.ToString());
         }
     }
