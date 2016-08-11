@@ -2,7 +2,7 @@
 using System.Collections;
 using System;
 
-public class Weapon : MonoBehaviour {
+public class Weapon : MonoBehaviour, iShootable {
 
     //private float lastShotTime;
     public float fireRate = 1f;
@@ -47,10 +47,7 @@ public class Weapon : MonoBehaviour {
         }
 
         //Firing
-        if (canShoot && Input.GetButton("Fire1"))
-        {
-            Fire();
-        }
+        Shoot();
 
         if (Input.GetButton("Fire2"))
         {
@@ -81,27 +78,31 @@ public class Weapon : MonoBehaviour {
         }
     }
 
-    void Fire()
+    public void Shoot()
     {
-        if (bullet != null)
+        if (canShoot && Input.GetButton("Fire1"))
         {
-            Vector3 sp;
-            Quaternion spr;
-            sp = this.transform.position;
-            sp += transform.forward * gunLength;
-            spr = this.transform.rotation;
-
-            if (sp != null)
+            if (bullet != null)
             {
-                GameObject s = Instantiate(bullet, sp, spr) as GameObject;
-            }
-            else
-            {
-                Debug.Log("Could not find transform point to shoot from!");
-            }
+                Vector3 sp;
+                Quaternion spRot;
+                sp = this.transform.position;
+                sp += transform.forward * gunLength;
+                spRot = this.transform.rotation;
+
+                if (sp != null)
+                {
+                    GameObject s = Instantiate(bullet, sp, spRot) as GameObject;
+                }
+                else
+                {
+                    Debug.Log("Could not find transform point to shoot from!");
+                }
 
 
-            shootCooldown = fireRate;
+                shootCooldown = fireRate;
+
+            }
         }
     }
 

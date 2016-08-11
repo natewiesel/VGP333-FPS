@@ -4,8 +4,8 @@ using System.Collections;
 public class FirstPersonMovement : MonoBehaviour {
 
     public float moveSpeed = 6.0f;
-    private float gravity = -Physics.gravity.magnitude;
-    private float gravityPull = 0.5f;
+    //private float gravity = -Physics.gravity.magnitude;
+    //private float gravityPull = 0.5f;
 
     private float Xspeed = 0f;
     private float Zspeed = 0f;

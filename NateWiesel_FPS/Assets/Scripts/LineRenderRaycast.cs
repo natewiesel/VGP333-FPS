@@ -1,14 +1,14 @@
 ﻿using UnityEngine;
 using System.Collections;
 public class LineRenderRaycast : MonoBehaviour {
-    public GameObject prefab;
+    //public GameObject prefab;
     public float range;
 
     private LineRenderer line;
 
 	// Use this for initialization
 	void Start () {
-        GameObject go = Instantiate(prefab);
+        //GameObject go = Instantiate(prefab);
 
         SetLineLength(range);
 	}
@@ -21,6 +21,6 @@ public class LineRenderRaycast : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-	    
+        SetLineLength(range);
 	}
 }

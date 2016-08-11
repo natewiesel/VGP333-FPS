@@ -3,12 +3,12 @@ using System.Collections;
 
 public class DestroyOnCollision : MonoBehaviour {
 
-    private Rigidbody cachedRB;
+    //private Rigidbody cachedRB;
     private Collider coll;
 
 	// Use this for initialization
 	void Start () {
-        cachedRB = GetComponent<Rigidbody>();
+        //cachedRB = GetComponent<Rigidbody>();
         coll = GetComponent<Collider>();
         Debug.Assert(coll != null, "Collider component error!");
         if (coll == null)
