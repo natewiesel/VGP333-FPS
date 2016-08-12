@@ -13,32 +13,34 @@ public class Overlord : MonoBehaviour {
         {
             if (instance == null)
             {
-                instance = new Overlord();
+                instance = FindObjectOfType<Overlord>();
             }
             return instance;
         }
     }
 
-    GameObject[] guns;
+    public GameObject[] gunObjects;
     int _selectedGun;
     int _maxSelectedGun;
-    int SelectedGun
+    public GameObject SelectedGun
     {
         get
         {
-            return _selectedGun;
+            if (gunObjects.Length > 0)
+            {
+                return gunObjects[_selectedGun];
+            }
+            else return null;
         }
     }
 
 
     void FindGuns()
     {
-        guns = GameObject.FindGameObjectsWithTag("Weapon");
-
         int ind = 0;
-        foreach (GameObject gun in guns)
+        foreach (GameObject gun in gunObjects)
         {
-            if (ind == SelectedGun)
+            if (ind == _selectedGun)
             {
                 gun.SetActive(true);
             }
@@ -50,18 +52,10 @@ public class Overlord : MonoBehaviour {
             ind++;
         }
 
-        _maxSelectedGun = guns.Length;
+        _maxSelectedGun = gunObjects.Length-1;
     }
-
-	// Use this for initialization
-	void Start () {
-        FindGuns();
-    }
-	
-	// Update is called once per frame
-	void Update () {
-        FindGuns();
-
+    void SwitchGuns()
+    {
         if (Input.GetKeyDown("q"))
         {
             _selectedGun--;
@@ -72,5 +66,16 @@ public class Overlord : MonoBehaviour {
         }
         if (_selectedGun < 0) _selectedGun = 0;
         if (_selectedGun > _maxSelectedGun) _selectedGun = _maxSelectedGun;
+    }
+
+	// Use this for initialization
+	void Start () {
+        FindGuns();
+    }
+	
+	// Update is called once per frame
+	void Update () {
+        FindGuns();
+        SwitchGuns();
     }
 }

@@ -15,8 +15,8 @@ public class LineRenderRaycast : MonoBehaviour {
 	
     private void SetLineLength(float length)
     {
-        line.SetPosition(0, transform.position);
-        line.SetPosition(1, transform.forward * length);
+        //line.SetPosition(0, transform.position);
+        //line.SetPosition(1, transform.forward * length);
     }
 
 	// Update is called once per frame

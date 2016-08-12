@@ -8,5 +8,5 @@ public interface iShootable {
 public interface iKillable
 {
     void Damage(float damage);
-    void Kill();
+    void Die();
 }

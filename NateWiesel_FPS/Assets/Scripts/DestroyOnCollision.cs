@@ -5,9 +5,10 @@ public class DestroyOnCollision : MonoBehaviour {
 
     //private Rigidbody cachedRB;
     private Collider coll;
+    private float damage = 1;
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {
         //cachedRB = GetComponent<Rigidbody>();
         coll = GetComponent<Collider>();
         Debug.Assert(coll != null, "Collider component error!");
@@ -24,9 +25,16 @@ public class DestroyOnCollision : MonoBehaviour {
 
     public void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.layer == 8)
-        {
+        TakesDamage td = collision.gameObject.GetComponent<TakesDamage>();
+        if (td == null) {
+            if (collision.gameObject.layer == 8)
+            {
+                Destroy(this.gameObject);
+            }
+        } else {
+            td.Damage(damage);
             Destroy(this.gameObject);
         }
+
     }
 }
