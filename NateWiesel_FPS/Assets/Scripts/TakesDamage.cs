@@ -9,7 +9,7 @@ public class TakesDamage : MonoBehaviour, iKillable {
     private float deathLength = 1.0f;
     private bool alive = true;
     private GameObject player;
-    private CapsuleCollider collider;
+    public GameObject bloodParticle;
 
     // Use this for initialization
     void Start () {
@@ -18,9 +18,6 @@ public class TakesDamage : MonoBehaviour, iKillable {
 
         player = GameObject.FindGameObjectWithTag("Player");
         Debug.Assert(player != null, "Player not found!");
-
-        collider = GetComponent<CapsuleCollider>();
-        Debug.Assert(collider != null, "collider error");
 	}
 	
     //Take damage
@@ -28,6 +25,12 @@ public class TakesDamage : MonoBehaviour, iKillable {
     {
         if (alive)
         {
+            if (bloodParticle != null)
+            {
+                GameObject go = GameObject.Instantiate(bloodParticle);
+                go.transform.position = transform.position;
+            }
+
             Health -= Mathf.CeilToInt(damage);
             if (Health < 0) Health = 0;
         }
@@ -53,7 +56,8 @@ public class TakesDamage : MonoBehaviour, iKillable {
     }
     private IEnumerator DeathRoutine()
     {
-        cachedRB.AddForce(new Vector3(0, -1000, 0), ForceMode.Impulse);
+        cachedRB.AddForce(new Vector3(0, 2, 0), ForceMode.Impulse);
+        cachedRB.constraints = RigidbodyConstraints.None;
         //this.transform.Rotate(-20, 0, 0);
 
         yield return new WaitForSeconds(deathLength);

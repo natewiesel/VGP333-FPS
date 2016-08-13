@@ -62,7 +62,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 117952}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -8.857728, y: 1, z: -8.314125}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 434394}
@@ -244,6 +244,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Health: 10
+  bloodParticle: {fileID: 101726, guid: 3f87620170ee15f43a8d0fed85c63fbc, type: 2}
 --- !u!136 &13692298
 CapsuleCollider:
   m_ObjectHideFlags: 1
