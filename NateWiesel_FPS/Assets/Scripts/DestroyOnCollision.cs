@@ -5,7 +5,7 @@ public class DestroyOnCollision : MonoBehaviour {
 
     //private Rigidbody cachedRB;
     private Collider coll;
-    private float damage = 1;
+    public float damage = 1;
 
     // Use this for initialization
     void Start () {

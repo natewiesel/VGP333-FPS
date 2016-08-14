@@ -63,7 +63,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 117952}
   m_LocalRotation: {x: 0, y: -0.9650586, z: 0, w: 0.2620341}
-  m_LocalPosition: {x: 61.086235, y: 1, z: 45.490307}
+  m_LocalPosition: {x: 157.3, y: 1, z: 48.7}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 434394}
@@ -88,9 +88,9 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 120490}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: -0.00000016292068}
   m_LocalPosition: {x: 0, y: 1.25, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_LocalScale: {x: -0.5, y: 0.5, z: 0.5}
   m_Children: []
   m_Father: {fileID: 426204}
   m_RootOrder: 1
@@ -194,7 +194,7 @@ Rigidbody:
   m_GameObject: {fileID: 117952}
   serializedVersion: 2
   m_Mass: 1
-  m_Drag: 0
+  m_Drag: 0.5
   m_AngularDrag: 0.05
   m_UseGravity: 1
   m_IsKinematic: 0
@@ -221,7 +221,7 @@ TextMesh:
   m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
   m_Color:
     serializedVersion: 2
-    rgba: 4294967295
+    rgba: 4278190335
 --- !u!114 &11400784
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -233,8 +233,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eda9a87499c6fdb4c9742031444e1372, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  chaseTarget: {fileID: 0}
-  speed: 1
+  chaseTarget: {fileID: 173510, guid: db0ef028ca19b064c96c7442f79ecc45, type: 2}
+  speed: 10
 --- !u!114 &11430264
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -246,6 +246,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02f5a612788c832418d4b826ea997390, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mirror: 0
 --- !u!114 &11456598
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -257,8 +258,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04f60d87698769044ad21543faa3406f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Health: 10
+  Health: 5
   bloodParticle: {fileID: 101726, guid: 3f87620170ee15f43a8d0fed85c63fbc, type: 2}
+  friendly: 0
 --- !u!136 &13692298
 CapsuleCollider:
   m_ObjectHideFlags: 1
@@ -278,7 +280,11 @@ Prefab:
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: chaseTarget
+      value: 
+      objectReference: {fileID: 173510, guid: db0ef028ca19b064c96c7442f79ecc45, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 117952}

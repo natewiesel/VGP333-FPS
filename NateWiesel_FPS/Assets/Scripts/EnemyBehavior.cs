@@ -29,15 +29,32 @@ public class EnemyBehavior : MonoBehaviour {
         }
     }
 
-    void OnCollisionEnter(Collision coll)
+    //void OnCollisionEnter(Collision coll)
+    //{
+    //    TakesDamage colltd = coll.gameObject.GetComponent<TakesDamage>();
+    //    if (colltd != null && td.isAlive)
+    //    {
+    //        if (colltd.friendly == true)
+    //        {
+    //            if (colltd.name == "Portal")
+    //            {
+    //                Destroy(this.gameObject);
+    //                colltd.Damage(td.Health);
+    //            } else
+    //            {
+    //                colltd.Damage(1);
+    //            }
+    //        }
+    //    }
+    //}
+    void OnCollisionStay(Collision coll)
     {
         TakesDamage colltd = coll.gameObject.GetComponent<TakesDamage>();
         if (colltd != null && td.isAlive)
         {
             if (colltd.friendly == true)
             {
-                colltd.Damage(td.Health);
-                Destroy(this.gameObject);
+                    colltd.Damage(1);
             }
         }
     }
