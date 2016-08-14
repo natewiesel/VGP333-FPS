@@ -25,7 +25,10 @@ public class DestroyOnRay : MonoBehaviour {
             TakesDamage td = hitObject.GetComponent<TakesDamage>();
             if (td != null)
             {
-                td.Damage(damage);
+                if (td.friendly == false)
+                {
+                    td.Damage(damage);
+                }
             }
 
             Debug.DrawRay(ray.origin, hit.point, Color.red, 2f);

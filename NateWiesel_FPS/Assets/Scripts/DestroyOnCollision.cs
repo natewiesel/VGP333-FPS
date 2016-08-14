@@ -31,7 +31,7 @@ public class DestroyOnCollision : MonoBehaviour {
             {
                 Destroy(this.gameObject);
             }
-        } else {
+        } else if (td.friendly == false){
             td.Damage(damage);
             Destroy(this.gameObject);
         }
