@@ -2,6 +2,7 @@
 using UnityEngine.Events;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 
 public class Overlord : MonoBehaviour {
 
@@ -20,6 +21,7 @@ public class Overlord : MonoBehaviour {
     }
 
     public GameObject[] gunObjects;
+
     int _selectedGun;
     int _maxSelectedGun;
     public GameObject SelectedGun
@@ -33,8 +35,6 @@ public class Overlord : MonoBehaviour {
             else return null;
         }
     }
-
-
     void FindGuns()
     {
         int ind = 0;
@@ -77,5 +77,10 @@ public class Overlord : MonoBehaviour {
 	void Update () {
         FindGuns();
         SwitchGuns();
+    }
+    
+    public void Restart()
+    {
+        SceneManager.LoadScene(0);
     }
 }

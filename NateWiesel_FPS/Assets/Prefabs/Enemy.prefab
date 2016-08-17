@@ -14,6 +14,7 @@ GameObject:
   - 114: {fileID: 11456598}
   - 54: {fileID: 5430674}
   - 114: {fileID: 11400784}
+  - 114: {fileID: 11411354}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -235,6 +236,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   chaseTarget: {fileID: 173510, guid: db0ef028ca19b064c96c7442f79ecc45, type: 2}
   speed: 10
+--- !u!114 &11411354
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 117952}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96b838b69f3810148a064ca69714de04, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  thingToMake: {fileID: 124654, guid: dbee464fb93797547aef3b0158de21ec, type: 2}
+  dropChance: 50
 --- !u!114 &11430264
 MonoBehaviour:
   m_ObjectHideFlags: 1

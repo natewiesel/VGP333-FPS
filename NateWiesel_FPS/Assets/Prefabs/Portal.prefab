@@ -45,6 +45,7 @@ GameObject:
   - 23: {fileID: 2350414}
   - 114: {fileID: 11487562}
   - 136: {fileID: 13648332}
+  - 114: {fileID: 11473282}
   m_Layer: 0
   m_Name: Portal
   m_TagString: Untagged
@@ -246,6 +247,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mirror: 0
+--- !u!114 &11473282
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 173510}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 992a36f8b8694ea4d9382fb6fe3b1f72, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &11487562
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -14,7 +14,7 @@ public class UIGetWeaponName : MonoBehaviour {
 	void Update () {
         if (Overlord.Instance.SelectedGun != null)
         {
-            textfield.text = "Weapon: " + Overlord.Instance.SelectedGun.name;
+            textfield.text = "Weapon: " + Overlord.Instance.SelectedGun.gameObject.name;
         } else
         {
             textfield.text = "Weapon: N/A";

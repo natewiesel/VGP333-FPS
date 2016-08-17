@@ -4,6 +4,12 @@ using System;
 
 public class Weapon : MonoBehaviour, iShootable {
 
+    //ammo vars
+    public int startingAmmo = 50;
+    public int maxAmmo = 150;
+    public int AmmoPickupMultiplier = 10;
+    public int Ammo;
+
     //private float lastShotTime;
     public float fireRate = 1f;
     private float shootCooldown = 0f;
@@ -25,13 +31,17 @@ public class Weapon : MonoBehaviour, iShootable {
     // Use this for initialization
     void Start () {
         //lastShotTime = Time.time;
-        transform.localPosition = heldPosition;
+        transform.localPosition = heldPosition + Vector3.down;
+        Ammo = startingAmmo;
     }
-	
-	// Update is called once per frame
-	void Update () {
+	void OnEnable()
+    {
+        transform.localPosition = heldPosition + Vector3.down;
+    }
+    // Update is called once per frame
+    void Update () {
         //Shooting cooldown
-        if (shootCooldown == 0f)
+        if (shootCooldown == 0f && Ammo > 0)
         {
             canShoot = true;
         }
@@ -59,6 +69,11 @@ public class Weapon : MonoBehaviour, iShootable {
 
         //Aiming
         AimAnimationUpdate();
+
+        if (Ammo > maxAmmo)
+        {
+            Ammo = maxAmmo;
+        }
 	}
 
     private void AimAnimationUpdate()
@@ -70,11 +85,11 @@ public class Weapon : MonoBehaviour, iShootable {
         if (isAiming)
         {
             transform.localPosition = Vector3.Lerp(transform.localPosition, aimPosition, aimLerpSpeed);
-            Debug.Log(cachedTrans.localPosition.ToString());
+            //Debug.Log(cachedTrans.localPosition.ToString());
         } else
         {
             transform.localPosition = Vector3.Lerp(transform.localPosition, heldPosition, aimLerpSpeed);
-            Debug.Log(cachedTrans.localPosition.ToString());
+            //Debug.Log(cachedTrans.localPosition.ToString());
         }
     }
 
@@ -99,7 +114,7 @@ public class Weapon : MonoBehaviour, iShootable {
                     Debug.Log("Could not find transform point to shoot from!");
                 }
 
-
+                Ammo--;
                 shootCooldown = fireRate;
 
             }
